@@ -19,15 +19,19 @@ model = pickle.load(open('model.pkl','rb'))
 @app.route('/')
 @app.route('/home')
 def home():
-    """Renders the home page."""
-    return render_template(
-        'index.html',
-        title='Home Page',
-        year=datetime.now().year,
-    )
+    return render_template('home.html',title='Home Page',year=datetime.now().year)
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title='Acerca', year=datetime.now().year)
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', title='Home Page', year=datetime.now().year)
+
 
 @app.route("/teste")
-def home():
+def teste():
     return "12"
     """
     <html>
