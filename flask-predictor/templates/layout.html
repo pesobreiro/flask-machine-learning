@@ -24,6 +24,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('exemplo2') }}">Exemplos</a></li>
                     <li><a href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>
             </div>
@@ -31,10 +32,22 @@
     </div>
 
     <div class="container body-content">
-        {% block content %}{% endblock %}
+        {% block content %}
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% block page_content %}{% endblock %}
+        </div>
+        {% endblock %}
         <hr />
         <footer>
-            <p>&copy; {{ year }} - Pedro Sobreiro</p>
+            <p>&copy; {{ year }} - Pedro Sobreiro - Made with 
+                <a href="http://flask.pocoo.org/docs/">Flask</a> 
+                using <a href="https://pythonhosted.org/Flask-Bootstrap/">Bootstrap</a></p>
         </footer>
     </div>
 
